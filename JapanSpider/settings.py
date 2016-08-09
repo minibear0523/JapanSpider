@@ -16,10 +16,10 @@ NEWSPIDER_MODULE = 'JapanSpider.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'JapanSpider (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -27,7 +27,7 @@ ROBOTSTXT_OBEY = True
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -64,9 +64,21 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'JapanSpider.pipelines.SomePipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'JapanSpider.pipelines.DuplicatesPipeline': 300,
+   # 'JapanSpider.pipelines.MongoPipeline': 800,
+}
+
+# MongoDB Settings
+MONGO_URI = 'mongodb://localhost:27017'
+MONGO_DB = 'japan_travel'
+
+# Logger Settings
+LOG_ENABLE = True
+LOG_ENCODINGS = 'utf-8'
+LOG_FORMAT = '[%(name)s: %(levelname)s] %(asctime)s: %(message)s'
+LOG_DATEFORMAT = '%m-%d %H:%M:%S'
+# LOG_FILE = '/home/minibear/log/scrapy/JapanSpider.log'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

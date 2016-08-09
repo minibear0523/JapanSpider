@@ -1,14 +1,32 @@
 # -*- coding: utf-8 -*-
-
-# Define here the models for your scraped items
-#
-# See documentation in:
-# http://doc.scrapy.org/en/latest/topics/items.html
-
-import scrapy
+from scrapy import Item, Field
 
 
-class JapanspiderItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class TaxFreeShopItem(Item):
+    name_en = Field() # 英文名
+    name_jp = Field() # 日文名
+    address_en = Field() # 英文地址
+    address_jp = Field() # 日文地址
+    prefecture = Field() # 日本省份
+    telephone = Field() # 电话
+    credit_card = Field() # 信用卡
+    lat = Field() # 经纬度
+    lng = Field()
+    url = Field() # 免税店网址
+
+
+class ShopItem(Item):
+    name = Field()
+    name_en = Field()
+    description = Field()
+    highlights = Field()
+    address = Field()
+    telephone = Field()
+    open_time = Field()
+    off_day = Field()
+    free_wifi = Field()
+    service = Field()
+    website = Field()
+    credit_card = Field()
+    other = Field()
+    traffic = Field()
