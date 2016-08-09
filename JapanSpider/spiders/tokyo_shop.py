@@ -38,7 +38,7 @@ class TokyoShopSpider(Spider):
             item['highlights'] = []
 
         for info in response.xpath('//table[@class="table01"]/tr'):
-            k = info.css('.type01::text').extract()
+            k = info.css('.type01::text').extract()[0]
             v = info.xpath('./td/text()').extract()
             if k == u'地址':
                 item['address'] = '\n'.join(v)
