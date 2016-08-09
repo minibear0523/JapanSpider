@@ -66,7 +66,7 @@ DOWNLOAD_DELAY = 3
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'JapanSpider.pipelines.DuplicatesPipeline': 300,
-   # 'JapanSpider.pipelines.MongoPipeline': 800,
+   'JapanSpider.pipelines.MongoPipeline': 800,
 }
 
 # MongoDB Settings
