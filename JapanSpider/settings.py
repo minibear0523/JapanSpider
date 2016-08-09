@@ -71,7 +71,7 @@ ITEM_PIPELINES = {
 
 # MongoDB Settings
 MONGO_URI = 'mongodb://localhost:27017'
-MONGO_DB = 'tripadvisordatabase'
+MONGO_DB = 'TripAdvisorDatabase'
 
 # Logger Settings
 LOG_ENABLE = True
