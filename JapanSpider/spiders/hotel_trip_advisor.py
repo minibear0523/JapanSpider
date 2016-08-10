@@ -141,22 +141,25 @@ class HotelTripAdvisorSpider(Spider):
                 v = amenity.xpath('.//div[@class="poi_card easyClear"]/div[@class="description_block"]')
                 for restaurant in v:
                     info = {}
-                    info['name'] = restaurant.xpath('./a[@class="poi_title"]/text()')[0].extract()
-                    info['url'] = response.urljoin(restaurant.xpath('./a[@class="poi_title"]/@href')[0].extract())
-                    stars = restaurant.xpath('.//span[starts-with(@class,"rate sprite-rating_s rating_s")]/img/@alt')[0].extract()
-                    regx = r'(\d)'
-                    pm = re.search(regx, stars)
-                    info['review_stars'] = pm.group(0)
-                    qty =  restaurant.xpath('.//div[@class="rating"]/a/text()')[0].extract()
-                    regx = r'(\d+)'
-                    info['review_qty'] = re.search(regx, qty).group(0)
-                    classes_xpath = restaurant.xpath('.//div[@class="details_block"]/text()').extract()
-                    if len(classes_xpath) > 0:
-                        classes = classes_xpath[-1].strip().split(',')
-                        info['classes'] = map(lambda x:x.strip(), classes)
-                    else:
-                        info['classes'] = []
-                    restaurant_list.append(info)
+                    try:
+                        info['name'] = restaurant.xpath('./a[@class="poi_title"]/text()')[0].extract()
+                        info['url'] = response.urljoin(restaurant.xpath('./a[@class="poi_title"]/@href')[0].extract())
+                        stars = restaurant.xpath('.//span[starts-with(@class,"rate sprite-rating_s rating_s")]/img/@alt')[0].extract()
+                        regx = r'(\d)'
+                        pm = re.search(regx, stars)
+                        info['review_stars'] = pm.group(0)
+                        qty =  restaurant.xpath('.//div[@class="rating"]/a/text()')[0].extract()
+                        regx = r'(\d+)'
+                        info['review_qty'] = re.search(regx, qty).group(0)
+                        classes_xpath = restaurant.xpath('.//div[@class="details_block"]/text()').extract()
+                        if len(classes_xpath) > 0:
+                            classes = classes_xpath[-1].strip().split(',')
+                            info['classes'] = map(lambda x:x.strip(), classes)
+                        else:
+                            info['classes'] = []
+                        restaurant_list.append(info)
+                    except Exception as e:
+                        info = {}
                 item['restaurant'] = restaurant_list
             else:
                 continue
