@@ -10,7 +10,7 @@ DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 class RestaurantTripAdvisorSpider(Spider):
     name = "restaurant_trip_advisor"
-    collection_name = "restaurant"
+    collection_name = "restaurants"
     allowed_domains = ["tripadvisor.cn"]
     start_urls = (
         'http://www.tripadvisor.cn/Restaurants-g298184-Tokyo_Tokyo_Prefecture_Kanto.html#EATERY_OVERVIEW_BOX',
