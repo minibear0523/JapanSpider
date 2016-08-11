@@ -54,3 +54,22 @@ class HotelItem(Item):
     level_tags = Field() # 标签
     stars = Field() # 星级
     update_date = Field() # 数据库更新时间
+
+
+class RestaurantItem(Item):
+    name = Field()
+    url = Field()
+    classes = Field() # 菜系
+    rank = Field() # 排名
+    review_stars = Field() # 评价星级
+    review_qty = Field() # 评价数
+    address = Field()
+    open_time = Field()
+    price = Field()
+    level = Field() # 评级
+    offer_kind = Field() # 餐时
+    special = Field() # 餐厅特色
+    env = Field() # 氛围类别
+    telephone = Field() # 电话
+    update_date = Field()
+    award = Field()
