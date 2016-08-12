@@ -13,6 +13,7 @@ class HotelTripAdvisorSpider(Spider):
     collection_name = 'hotel'
     level = [u'豪华', u'中等', u'经济实惠']
     start_urls = [
+        # 东京
         "http://www.tripadvisor.cn/Hotels-g298184-Tokyo_Tokyo_Prefecture_Kanto-Hotels.html",
     ]
 

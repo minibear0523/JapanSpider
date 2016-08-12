@@ -15,9 +15,10 @@ class RestaurantTripAdvisorSpider(Spider):
     custom_settings = {
         "CLOSESPIDER_ITEMCOUNT": 40000
     }
-    start_urls = (
+    start_urls = [
+        # 东京
         'http://www.tripadvisor.cn/Restaurants-g298184-Tokyo_Tokyo_Prefecture_Kanto.html#EATERY_OVERVIEW_BOX',
-    )
+    ]
 
     def parse(self, response):
         self.logger.info("Restaurant list url: %s" % response.url)
