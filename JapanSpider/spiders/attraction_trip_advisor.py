@@ -23,7 +23,7 @@ class AttractionTripAdvisorSpider(Spider):
 
         next_page = response.xpath('//div[contains(@class, "unified pagination")]/a/@href')
         if next_page:
-            url = response.urljoin(next_page[0].extract())
+            url = response.urljoin(next_page[-1].extract())
             yield Request(url, self.parse)
 
     def parse_detail(self, response):
